@@ -33,18 +33,17 @@ object HotItems {
     env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime) // 定义事件时间语义
 
     // 从文件中读取数据，并转换成样例类，提取时间戳生成watermark
-//    val inputStream: DataStream[String] = env.readTextFile("D:\\Projects\\BigData\\UserBehaviorAnalysis\\HotItemsAnalysis\\src\\main\\resources\\UserBehavior.csv")
+    val inputStream: DataStream[String] = env.readTextFile("/Users/stillcoolme/Documents/ideaProject/myself/flink-uba/src/main/resources/UserBehavior.csv")
 
     // 从kafka读取数据
-    val properties = new Properties()
+/*    val properties = new Properties()
     properties.setProperty("bootstrap.servers", "localhost:9092")
     properties.setProperty("group.id", "consumer-group")
     properties.setProperty("key.deserializer",
       "org.apache.kafka.common.serialization.StringDeserializer")
     properties.setProperty("value.deserializer",
       "org.apache.kafka.common.serialization.StringDeserializer")
-
-    val inputStream = env.addSource( new FlinkKafkaConsumer[String]("hotitems", new SimpleStringSchema(), properties) )
+    val inputStream = env.addSource( new FlinkKafkaConsumer[String]("hotitems", new SimpleStringSchema(), properties) )*/
 
     val dataStream: DataStream[UserBehavior] = inputStream
       .map(data => {
