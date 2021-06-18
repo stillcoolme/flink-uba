@@ -157,7 +157,7 @@ public class HotItem {
                         .append("\n");
             }
             resultBuilder.append("===============================\n\n");
-            // 控制输出频率
+            // 控制输出频率，生产环境按数据频率要求来5分钟
             Thread.sleep(1000L);
             out.collect(resultBuilder.toString());
 
