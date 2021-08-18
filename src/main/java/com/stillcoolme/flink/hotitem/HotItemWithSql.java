@@ -11,6 +11,8 @@ import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.java.StreamTableEnvironment;
 import org.apache.flink.types.Row;
 
+import java.net.URL;
+
 public class HotItemWithSql {
 
     public static void main(String[] args) throws Exception {
@@ -25,7 +27,8 @@ public class HotItemWithSql {
                 .build();
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env, settings);
 
-        DataStream<String> inputStream = env.readTextFile("/Users/stillcoolme/Documents/ideaProject/myself/flink-uba/src/main/resources/UserBehavior.csv");
+        URL resource = HotItemWithSql.class.getResource("UserBehavior.csv");
+        DataStream<String> inputStream = env.readTextFile(resource.getPath());
         DataStream<UserBehavior> dataStream = inputStream
                 .map(line -> {
                     String[] fields = line.split(",");

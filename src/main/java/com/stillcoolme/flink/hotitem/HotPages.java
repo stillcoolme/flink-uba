@@ -157,7 +157,8 @@ public class HotPages {
                 pageViewCountMapState.clear();
                 return;
             }
-            ArrayList<Map.Entry<String, Long>> es = (ArrayList<Map.Entry<String, Long>>) Lists.newArrayList(pageViewCountMapState.entries());
+            ArrayList<Map.Entry<String, Long>> es =
+                    (ArrayList<Map.Entry<String, Long>>) Lists.newArrayList(pageViewCountMapState.iterator());
 
             super.onTimer(timestamp, ctx, out);
         }
