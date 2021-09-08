@@ -8,7 +8,7 @@ package com.stillcoolme.flink.orderdetect.entity;
 public class OrderEvent {
     private Long orderId;
     private String eventType;
-    private String txId;
+    private String txId;       // 付款流水号
     private Long timestamp;
 
     public OrderEvent() {
