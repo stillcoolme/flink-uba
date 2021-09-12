@@ -122,6 +122,7 @@ public class OrderPayTimeoutWithoutCEP {
                     ctx.timerService().deleteEventTimeTimer(timerTs);
                 } else {
                     // 2.2 没有下单事件，乱序数据，注册一个定时器，然后等待下单事件
+                    // 注册一个 当前数据时间戳 的定时器，这乱序数据时间是比watermark大的，定时器由watermark来触发执行
                     ctx.timerService().registerEventTimeTimer(value.getTimestamp() * 1000L);
                     // 更新状态
                     timerTsState.update(value.getTimestamp() * 1000L);
